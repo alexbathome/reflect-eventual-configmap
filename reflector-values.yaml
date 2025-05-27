@@ -1,0 +1,10 @@
+helm:
+  reflector:
+    # Enable the reflector
+    enabled: true
+    # Configure RBAC
+    rbac:
+      create: true
+    # Service account configuration
+    serviceAccount:
+      create: true

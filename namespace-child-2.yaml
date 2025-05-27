@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: child-2
+  labels:
+    name: child-2
+    purpose: config-consumer

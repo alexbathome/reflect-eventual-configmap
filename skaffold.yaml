@@ -1,0 +1,32 @@
+apiVersion: skaffold/v4beta11
+kind: Config
+metadata:
+  name: ember-reflector-lab
+build:
+  artifacts:
+    - image: ember-reflector-lab
+      docker:
+        dockerfile: Dockerfile
+deploy:
+  helm:
+    releases:
+      # Install emberlabs reflector helm chart
+      - name: reflector
+        repo: https://emberstack.github.io/helm-charts
+        remoteChart: reflector
+        namespace: reflector-system
+        createNamespace: true
+        valuesFiles:
+          - reflector-values.yaml
+manifests:
+  rawYaml:
+    - namespace-config-master.yaml
+    - namespace-child-1.yaml
+    - namespace-child-2.yaml
+    - namespace-child-3.yaml
+    - namespace-child-4.yaml
+    - master-configmap.yaml
+    - pod-child-1.yaml
+    - pod-child-2.yaml
+    - pod-child-3.yaml
+    - pod-child-4.yaml
